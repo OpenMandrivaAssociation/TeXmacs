@@ -1,7 +1,7 @@
 Summary: A wysiwyg mathematical text editor
 Name: TeXmacs
 Version: 1.0.6.9
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.bz2
 Url: http://www.texmacs.org
 License: GPL
