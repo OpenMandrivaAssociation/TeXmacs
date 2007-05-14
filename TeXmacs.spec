@@ -1,9 +1,13 @@
-Summary: A wysiwyg mathematical text editor
 Name: TeXmacs
-Version: 1.0.6.9
-Release: %mkrel 2
-Source0: ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.bz2
-Url: http://www.texmacs.org
+Version: 1.0.6.10
+Release: %mkrel 1
+Summary: WYSIWYG mathematical text editor
+URL: http://www.texmacs.org/
+Source0: ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
+Source10: %{name}.16.png
+Source11: %{name}.32.png
+Source12: %{name}.48.png
+Patch0: %{name}-1.0.6.10-build.patch
 License: GPL
 Group: Editors
 Requires: tetex
@@ -17,9 +21,6 @@ BuildRequires: X11-devel
 BuildRequires: libguile-devel
 BuildRequires: desktop-file-utils
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source10:%{name}.16.png.bz2
-Source11:%{name}.32.png.bz2
-Source12:%{name}.48.png.bz2
 
 %description
 GNU TeXmacs is a free scientific text editor, which was both inspired by 
@@ -42,37 +43,37 @@ suite, with spreadsheet capacities, a technical drawing editor and a
 presentation mode.
 
 %prep
-
 %setup -q -n %{name}-%{version}-src
+%patch0 -p1
 
 %build
 %configure2_5x --disable-optimize
 %make TEXMACS
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+rm -rf %{buildroot}
+%{makeinstall_std}
 export GUILE_DATA_PATH=`guile-config info pkgdatadir`
 export GUILE_LOAD_PATH=`find $GUILE_DATA_PATH -type d | grep ice-9`
 
 # fix calls for R >= 2.0.0
-(cd $RPM_BUILD_ROOT%{_datadir}/TeXmacs/plugins/r/r/
+(cd %{buildroot}%{_datadir}/TeXmacs/plugins/r/r/
 R CMD build --force TeXmacs
 R CMD INSTALL -l `pwd` TeXmacs_0.1.tar.gz)
 
 # icons
-install -d $RPM_BUILD_ROOT%{_miconsdir}
-install -d $RPM_BUILD_ROOT%{_liconsdir}
-bzcat %{SOURCE10} > $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
-bzcat %{SOURCE11} > $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-bzcat %{SOURCE12} > $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
+install -d %{buildroot}%{_miconsdir}
+install -d %{buildroot}%{_liconsdir}
+cp -a %{SOURCE10} %{buildroot}%{_miconsdir}/%{name}.png
+cp -a %{SOURCE11} %{buildroot}%{_iconsdir}/%{name}.png
+cp -a %{SOURCE12} %{buildroot}%{_liconsdir}/%{name}.png
 
-mkdir -p  $RPM_BUILD_ROOT%_datadir/applications
-cp  $RPM_BUILD_ROOT%_datadir/TeXmacs/misc/mime/texmacs.desktop $RPM_BUILD_ROOT%_datadir/applications/
+mkdir -p  %{buildroot}%_datadir/applications
+cp -a %{buildroot}%_datadir/TeXmacs/misc/mime/texmacs.desktop %{buildroot}%_datadir/applications/
 
 # menu
-install -d $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
+install -d %{buildroot}%{_menudir}
+cat << EOF > %{buildroot}%{_menudir}/%{name}
 ?package(%{name}):command="texmacs" \
 needs="x11" \
 icon="%{name}.png" \
@@ -85,11 +86,10 @@ EOF
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Office-Wordprocessors;Office;WordProcessor" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %{update_menus}
@@ -109,5 +109,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_datadir}/applications/*
-
-
