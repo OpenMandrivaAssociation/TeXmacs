@@ -1,6 +1,6 @@
 Name:		TeXmacs
 Version:	1.0.6.10
-Release:	%mkrel 2
+Release:	%mkrel 3
 Summary:	WYSIWYG mathematical text editor
 URL:		http://www.texmacs.org/
 Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
@@ -12,9 +12,6 @@ License:	GPL
 Group:		Editors
 Requires:	tetex
 Requires:	guile
-Requires:	R-base
-Requires:	axiom
-Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
 BuildRequires:	X11-devel 
@@ -62,30 +59,17 @@ R CMD build --force TeXmacs
 R CMD INSTALL -l `pwd` TeXmacs_0.1.tar.gz)
 
 # icons
-install -d %{buildroot}%{_miconsdir}
-install -d %{buildroot}%{_liconsdir}
-cp -a %{SOURCE10} %{buildroot}%{_miconsdir}/%{name}.png
-cp -a %{SOURCE11} %{buildroot}%{_iconsdir}/%{name}.png
-cp -a %{SOURCE12} %{buildroot}%{_liconsdir}/%{name}.png
+install -d %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
+cp -a %{SOURCE10} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+cp -a %{SOURCE10} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+cp -a %{SOURCE10} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
-mkdir -p  %{buildroot}%_datadir/applications
-cp -a %{buildroot}%_datadir/TeXmacs/misc/mime/texmacs.desktop %{buildroot}%_datadir/applications/
-
-# menu
-install -d %{buildroot}%{_menudir}
-cat << EOF > %{buildroot}%{_menudir}/%{name}
-?package(%{name}):command="texmacs" \
-needs="x11" \
-icon="%{name}.png" \
-section="Office/Wordprocessors" \
-title="TeXmacs editor" \
-longtitle="A WYSIWYG scientific text editor" \
-xdg="true"
-EOF
+mkdir -p  %{buildroot}%{_datadir}/applications
+cp -a %{buildroot}%{_datadir}/TeXmacs/misc/mime/texmacs.desktop %{buildroot}%{_datadir}/applications/
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Office-Wordprocessors;Office;WordProcessor" \
+  --add-category="Office;WordProcessor" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
@@ -93,9 +77,11 @@ rm -rf %{buildroot}
 
 %post
 %{update_menus}
+%update_icon_cahce hicolor
 
 %postun
 %{clean_menus}
+%clean_icon_cache hicolor
 
 %files
 %defattr(-,root,root)
@@ -104,8 +90,5 @@ rm -rf %{buildroot}
 %{_mandir}/*/*
 %{_libexecdir}/TeXmacs
 %{_datadir}/TeXmacs
-%{_menudir}/%{name}
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/*
