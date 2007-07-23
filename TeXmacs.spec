@@ -1,6 +1,6 @@
 Name:		TeXmacs
 Version:	1.0.6.10
-Release:	%mkrel 3
+Release:	%mkrel 4
 Summary:	WYSIWYG mathematical text editor
 URL:		http://www.texmacs.org/
 Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
@@ -12,6 +12,9 @@ License:	GPL
 Group:		Editors
 Requires:	tetex
 Requires:	guile
+Requires:       R-base 	 
+Requires:       axiom 	 
+Requires:       maxima >= 5.9.1 	
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
 BuildRequires:	X11-devel 
