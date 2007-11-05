@@ -1,6 +1,6 @@
 Name:		TeXmacs
-Version:	1.0.6.10
-Release:	%mkrel 4
+Version:	1.0.6.12
+Release:	%mkrel 1
 Summary:	WYSIWYG mathematical text editor
 URL:		http://www.texmacs.org/
 Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
@@ -8,7 +8,7 @@ Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
 Patch0:		%{name}-1.0.6.10-build.patch
-License:	GPL
+License:	GPLv2+
 Group:		Editors
 Requires:	tetex
 Requires:	guile
