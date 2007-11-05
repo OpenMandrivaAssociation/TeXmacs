@@ -1,25 +1,27 @@
+Summary:	WYSIWYG mathematical text editor
 Name:		TeXmacs
 Version:	1.0.6.12
 Release:	%mkrel 1
-Summary:	WYSIWYG mathematical text editor
-URL:		http://www.texmacs.org/
+License:	GPLv2+
+Group:		Editors
+URL:		http://www.texmacs.org
 Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
-Patch0:		%{name}-1.0.6.10-build.patch
-License:	GPLv2+
-Group:		Editors
+
 Requires:	tetex
 Requires:	guile
-Requires:       R-base 	 
-Requires:       axiom 	 
-Requires:       maxima >= 5.9.1 	
+Requires:	R-base
+Requires:	axiom
+Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
-BuildRequires:	X11-devel 
+BuildRequires:	X11-devel
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
+Requires(post):	desktop-file-utils
+Requires(postun): desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -44,15 +46,16 @@ presentation mode.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p1
 
 %build
-%configure2_5x --disable-optimize
-%make TEXMACS
+%configure2_5x \
+	--enable-optimize="%{optflags}"
+	
+%make
 
 %install
 rm -rf %{buildroot}
-%{makeinstall_std}
+%makeinstall_std
 export GUILE_DATA_PATH=`guile-config info pkgdatadir`
 export GUILE_LOAD_PATH=`find $GUILE_DATA_PATH -type d | grep ice-9`
 
@@ -70,9 +73,12 @@ cp -a %{SOURCE10} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 mkdir -p  %{buildroot}%{_datadir}/applications
 cp -a %{buildroot}%{_datadir}/TeXmacs/misc/mime/texmacs.desktop %{buildroot}%{_datadir}/applications/
 
-desktop-file-install --vendor="" \
+sed -i -e 's/^Icon=%{name}.xpm$/Icon=%{name}/g' %{buildroot}%{_datadir}/applications/*
+
+desktop-file-install \
   --remove-category="Application" \
-  --add-category="Office;WordProcessor" \
+  --remove-key="Path" \
+  --add-category="Office;WordProcessor;Math;" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
@@ -80,10 +86,12 @@ rm -rf %{buildroot}
 
 %post
 %{update_menus}
+%{update_desktop_database}
 %update_icon_cahce hicolor
 
 %postun
 %{clean_menus}
+%{clean_desktop_database}
 %clean_icon_cache hicolor
 
 %files
