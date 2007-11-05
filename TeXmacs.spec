@@ -37,12 +37,8 @@ formulas, which makes TeXmacs suitable as an interface for computer algebra
 systems. TeXmacs also supports the Guile/Scheme extension language, so that 
 you may customize the interface and write your own extensions to the editor.
 
-TeXmacs currently runs on PC's and PPC's under Gnu/linux (a >200MHz processor 
-and >32Mb of memory are recommended) and on sun computers. Converters exist 
-for TeX/LaTeX and they are under development for Html/Mathml/Xml. In the 
-future, TeXmacs is planned to evoluate towards a complete scientific office 
-suite, with spreadsheet capacities, a technical drawing editor and a 
-presentation mode.
+Converters exist for TeX/LaTeX and they are under development for
+Html/Mathml/Xml.
 
 %prep
 %setup -q -n %{name}-%{version}-src
