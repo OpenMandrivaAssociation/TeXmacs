@@ -22,7 +22,6 @@ BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 Requires(post):	desktop-file-utils
 Requires(postun): desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 GNU TeXmacs is a free scientific text editor, which was both inspired by 
