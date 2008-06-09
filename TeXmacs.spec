@@ -83,7 +83,7 @@ rm -rf %{buildroot}
 %post
 %{update_menus}
 %{update_desktop_database}
-%update_icon_cahce hicolor
+%update_icon_cache hicolor
 
 %postun
 %{clean_menus}
