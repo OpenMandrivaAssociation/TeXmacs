@@ -1,7 +1,7 @@
 Summary:	WYSIWYG mathematical text editor
 Name:		TeXmacs
 Version:	1.0.6.12
-Release:	%mkrel 2
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
