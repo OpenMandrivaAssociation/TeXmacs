@@ -1,7 +1,7 @@
 Summary:	WYSIWYG mathematical text editor
 Name:		TeXmacs
 Version:	1.0.7.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
@@ -47,7 +47,7 @@ Html/Mathml/Xml.
 %configure2_5x \
 	--enable-optimize="%{optflags}"
 	
-%make
+%make LDFLAGS="%{?ldflags}"
 
 %install
 rm -rf %{buildroot}
