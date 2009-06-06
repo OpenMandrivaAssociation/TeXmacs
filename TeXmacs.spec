@@ -20,6 +20,7 @@ Provides:	TeXmacs-fonts
 BuildRequires:	X11-devel
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	R-base
 Requires(post):	desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
