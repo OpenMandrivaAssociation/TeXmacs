@@ -17,7 +17,8 @@ Requires:	axiom
 Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
-BuildRequires:	X11-devel
+BuildRequires:	libx11-devel
+BuildRequires:	freetype2-devel
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
