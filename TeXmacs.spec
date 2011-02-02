@@ -9,7 +9,7 @@ Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
-
+Patch0:		TeXmacs-1.0.7.2-link.patch
 Requires:	tetex
 Requires:	guile
 Requires:	R-base
@@ -44,6 +44,7 @@ Html/Mathml/Xml.
 
 %prep
 %setup -q -n %{name}-%{version}-src
+%patch0 -p0
 
 %build
 %configure2_5x \
