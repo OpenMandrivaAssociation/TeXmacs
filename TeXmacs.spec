@@ -58,11 +58,6 @@ rm -rf %{buildroot}
 export GUILE_DATA_PATH=`guile-config info pkgdatadir`
 export GUILE_LOAD_PATH=`find $GUILE_DATA_PATH -type d | grep ice-9`
 
-# fix calls for R >= 2.0.0
-(cd %{buildroot}%{_datadir}/TeXmacs/plugins/r/r/
-R CMD build --force TeXmacs
-R CMD INSTALL -l `pwd` TeXmacs_0.1.tar.gz)
-
 # icons
 install -d %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
 cp -a %{SOURCE10} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
