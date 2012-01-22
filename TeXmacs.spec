@@ -1,7 +1,7 @@
-Summary:	WYSIWYG mathematical text editor
+Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
-Version:	1.0.7.2
-Release:	%mkrel 3
+Version:	1.0.7.11
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
@@ -9,7 +9,6 @@ Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
-Patch0:		TeXmacs-1.0.7.2-link.patch
 Requires:	tetex
 Requires:	guile
 Requires:	R-base
@@ -22,29 +21,27 @@ BuildRequires:	freetype2-devel
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
-Requires(post):	desktop-file-utils
-Requires(postun): desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-GNU TeXmacs is a free scientific text editor, which was both inspired by 
-TeX and GNU Emacs. The editor allows you to write structured documents via 
-a wysiwyg (what-you-see-is-what-you-get) and user friendly interface. New 
-styles may be created by the user. The program implements high-quality 
-typesetting algorithms and TeX fonts, which help you to produce professionally 
-looking documents.
+GNU TeXmacs is a free wysiwyw (what you see is what you want) editing platform
+with special features for scientists. The software aims to provide a unified
+and user friendly framework for editing structured documents with different
+types of content (text, graphics, mathematics, interactive content, etc.).
+The rendering engine uses high-quality typesetting algorithms so as to produce
+professionally looking documents, which can either be printed out or presented
+from a laptop.
 
-The high typesetting quality still goes through for automatically generated 
-formulas, which makes TeXmacs suitable as an interface for computer algebra 
-systems. TeXmacs also supports the Guile/Scheme extension language, so that 
-you may customize the interface and write your own extensions to the editor.
-
-Converters exist for TeX/LaTeX and they are under development for
-Html/Mathml/Xml.
+The software includes a text editor with support for mathematical formulas,
+a small technical picture editor and a tool for making presentations from
+a laptop. Moreover, TeXmacs can be used as an interface for many external
+systems for computer algebra, numerical analysis, statistics, etc. New
+presentation styles can be written by the user and new features can be added
+to the editor using the Scheme extension language. A native spreadsheet
+and tools for collaborative authoring are planned for later. 
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p0
 
 %build
 %configure2_5x \
@@ -77,20 +74,6 @@ desktop-file-install \
 
 %clean
 rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%{update_desktop_database}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%{clean_desktop_database}
-%clean_icon_cache hicolor
-%endif
 
 %files
 %defattr(-,root,root)
