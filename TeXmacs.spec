@@ -21,6 +21,7 @@ BuildRequires:	freetype2-devel
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
+BuildRequires:	libxext-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
