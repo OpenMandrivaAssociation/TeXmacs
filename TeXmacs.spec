@@ -1,6 +1,6 @@
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
-Version:	1.0.7.11
+Version:	1.0.7.15
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Editors
@@ -22,7 +22,7 @@ BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
 BuildRequires:	libxext-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	qt4-devel
 
 %description
 GNU TeXmacs is a free wysiwyw (what you see is what you want) editing platform
@@ -43,6 +43,8 @@ and tools for collaborative authoring are planned for later.
 
 %prep
 %setup -q -n %{name}-%{version}-src
+find . -name '*.cpp' -exec chmod 644 {} \;
+find . -name '*.hpp' -exec chmod 644 {} \;
 
 %build
 %configure2_5x \
@@ -73,8 +75,7 @@ desktop-file-install \
   --add-category="Office;WordProcessor;Math;" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-%clean
-rm -rf %{buildroot}
+chmod 755 %{buildroot}%{_datadir}/TeXmacs/langs/encoding/*.awk
 
 %files
 %defattr(-,root,root)
@@ -85,3 +86,8 @@ rm -rf %{buildroot}
 %{_datadir}/TeXmacs
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/*
+%{_datadir}/application-registry/texmacs.applications
+%{_iconsdir}/gnome/scalable/*/*.svg
+%{_datadir}/mime-info/texmacs.*
+%{_datadir}/mime/packages/texmacs.xml
+%{_datadir}/pixmaps/TeXmacs.xpm
