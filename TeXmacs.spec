@@ -16,12 +16,12 @@ Requires:	axiom
 Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
-BuildRequires:	libx11-devel
-BuildRequires:	freetype2-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	libguile-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
-BuildRequires:	libxext-devel
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	qt4-devel
 
 %description
