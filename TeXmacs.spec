@@ -1,11 +1,11 @@
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
-Version:	1.0.7.15
-Release:	%mkrel 1
+Version:	1.0.7.16
+Release:	1
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
-Source0:	ftp://ftp.texmacs.org/pub/TeXmacs/targz/%{name}-%{version}-src.tar.gz
+Source0:	http://www.texmacs.org/Download/ftp/tmftp/source/%{name}-%{version}-src.tar.gz
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
@@ -53,7 +53,6 @@ find . -name '*.hpp' -exec chmod 644 {} \;
 %make LDFLAGS="%{?ldflags}"
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 export GUILE_DATA_PATH=`guile-config info pkgdatadir`
 export GUILE_LOAD_PATH=`find $GUILE_DATA_PATH -type d | grep ice-9`
@@ -78,7 +77,6 @@ desktop-file-install \
 chmod 755 %{buildroot}%{_datadir}/TeXmacs/langs/encoding/*.awk
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
 %{_includedir}/TeXmacs.h
 %{_mandir}/*/*
