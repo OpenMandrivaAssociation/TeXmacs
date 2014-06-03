@@ -18,7 +18,7 @@ Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	libguile-devel
+BuildRequires:	pkgconfig(guile-2.0)
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
 BuildRequires:	pkgconfig(xext)
