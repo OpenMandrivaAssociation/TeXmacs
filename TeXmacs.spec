@@ -1,7 +1,7 @@
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
 Version:	1.0.7.16
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
