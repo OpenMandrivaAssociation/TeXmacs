@@ -11,6 +11,7 @@ Source0:	http://www.texmacs.org/Download/ftp/tmftp/source/%{name}-%{version}-src
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
+Patch1:		TeXmacs-1.99.1-lz-deflate.patch
 Requires:	tetex
 Requires:	guile
 Requires:	R-base
@@ -48,6 +49,7 @@ find . -name '*.cpp' -exec chmod 644 {} \;
 find . -name '*.hpp' -exec chmod 644 {} \;
 
 %build
+%apply_patches
 %configure \
 	--enable-optimize="%{optflags}" \
 	--enable-guile2=yes

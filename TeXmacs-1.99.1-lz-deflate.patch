@@ -1,0 +1,11 @@
+--- TeXmacs-1.99.1-src/src/makefile.in.orig	2015-02-15 19:44:24.307636984 -0500
++++ TeXmacs-1.99.1-src/src/makefile.in	2015-02-15 19:44:35.067601453 -0500
+@@ -395,7 +395,7 @@ TEXMACS_objects := $(strip $(call uses,s
+ 
+ link_options:=-L$(tmsrc)/lib $(LDRT) -lm $(LDPATH) $(LDGUI) $(LDICONV) \
+    $(LDGUILE) $(LDAXEL) $(LDCAIRO) $(LDIMLIB2) $(LDSQLITE3) $(LDFREETYPE) \
+-   $(LDDL) $(LDSPARKLE)
++   $(LDDL) $(LDSPARKLE) -lz
+ 
+ $(tmsrc)/bin/texmacs.bin: Objects/texmacs-$(link).bin
+ 	$(CP) $^ $@
