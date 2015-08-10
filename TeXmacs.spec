@@ -50,6 +50,10 @@ find . -name '*.hpp' -exec chmod 644 {} \;
 
 %build
 %apply_patches
+
+export CC=gcc
+export CXX=g++
+
 %configure \
 	--enable-optimize="%{optflags}" \
 	--enable-guile2=yes
