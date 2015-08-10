@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
 Version:	1.99.2
