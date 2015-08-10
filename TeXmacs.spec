@@ -12,7 +12,6 @@ Source12:	%{name}.48.png
 Requires:	tetex
 Requires:	guile
 Requires:	R-base
-Requires:	axiom
 Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
