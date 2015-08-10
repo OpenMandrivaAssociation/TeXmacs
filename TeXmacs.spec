@@ -11,6 +11,7 @@ Source0:	http://www.texmacs.org/Download/ftp/tmftp/source/%{name}-%{version}-src
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
+Source100:	%{name}.rpmlintrc
 Patch1:		TeXmacs-1.99.1-lz-deflate.patch
 Requires:	tetex
 Requires:	guile
