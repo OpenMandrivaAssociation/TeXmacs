@@ -48,7 +48,7 @@ find . -name '*.hpp' -exec chmod 644 {} \;
 
 %build
 %configure2_5x \
-	--enable-optimize="%{optflags}"
+	--enable-optimize="%{optflags}" \
 	--enable-guile2=yes
 	
 %make LDFLAGS="%{?ldflags}"
