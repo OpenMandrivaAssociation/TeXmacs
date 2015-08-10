@@ -1,7 +1,7 @@
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
-Version:	1.0.7.16
-Release:	2
+Version:	1.99.2
+Release:	1
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
@@ -49,6 +49,7 @@ find . -name '*.hpp' -exec chmod 644 {} \;
 %build
 %configure2_5x \
 	--enable-optimize="%{optflags}"
+	--enable-guile2=yes
 	
 %make LDFLAGS="%{?ldflags}"
 
