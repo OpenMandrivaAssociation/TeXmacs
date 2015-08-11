@@ -3,7 +3,7 @@
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
 Version:	1.99.2
-Release:	1
+Release:	3
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
@@ -14,14 +14,14 @@ Source12:	%{name}.48.png
 Source100:	%{name}.rpmlintrc
 Patch1:		TeXmacs-1.99.1-lz-deflate.patch
 Requires:	tetex
-Requires:	guile
+Requires:	guile1.8
 Requires:	R-base
 Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	pkgconfig(guile-2.0)
+BuildRequires:	pkgconfig(guile-1.8)
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
 BuildRequires:	pkgconfig(xext)
@@ -56,8 +56,7 @@ export CC=gcc
 export CXX=g++
 
 %configure \
-	--enable-optimize="%{optflags}" \
-	--enable-guile2=yes
+	--enable-optimize="%{optflags}"
 	
 %make
 
