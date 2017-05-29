@@ -1,6 +1,5 @@
 sources:
-  TeXmacs-1.0.7.16-src.tar.gz: bd73a8ff1c5361161cc65c57dfe8e706a1859231
-  TeXmacs-1.99.2-src.tar.gz: 5298e9bd3f61cd8f2117fe1d96a7435f8a788cc8
   TeXmacs.16.png: 4b57fd5ea7e468661d73661183765e40f63b827b
   TeXmacs.32.png: 836771cdb0c291e77a05f57ad0066219cd175590
   TeXmacs.48.png: d24db2f34110628bcefc50d5a94f574dbec16055
+  TeXmacs-1.99.5-src.tar.gz: be6fdc39a094db6dc547490fa89a95876dbde002

@@ -2,8 +2,8 @@
 
 Summary:	WYSIWYW scientifical text editor
 Name:		TeXmacs
-Version:	1.99.2
-Release:	3
+Version:	1.99.5
+Release:	1
 License:	GPLv2+
 Group:		Editors
 URL:		http://www.texmacs.org
@@ -42,7 +42,7 @@ a laptop. Moreover, TeXmacs can be used as an interface for many external
 systems for computer algebra, numerical analysis, statistics, etc. New
 presentation styles can be written by the user and new features can be added
 to the editor using the Scheme extension language. A native spreadsheet
-and tools for collaborative authoring are planned for later. 
+and tools for collaborative authoring are planned for later.
 
 %prep
 %setup -q -n %{name}-%{version}-src
@@ -57,7 +57,7 @@ export CXX=g++
 
 %configure \
 	--enable-optimize="%{optflags}"
-	
+
 %make
 
 %install
