@@ -12,7 +12,6 @@ Source10:	%{name}.16.png
 Source11:	%{name}.32.png
 Source12:	%{name}.48.png
 Source100:	%{name}.rpmlintrc
-Patch1:		TeXmacs-1.99.1-lz-deflate.patch
 Requires:	tetex
 Requires:	guile1.8
 Requires:	R-base
@@ -48,9 +47,9 @@ and tools for collaborative authoring are planned for later.
 %setup -q -n %{name}-%{version}-src
 find . -name '*.cpp' -exec chmod 644 {} \;
 find . -name '*.hpp' -exec chmod 644 {} \;
+%apply_patches
 
 %build
-%apply_patches
 
 export CC=gcc
 export CXX=g++
