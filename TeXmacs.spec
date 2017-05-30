@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(guile-1.8)
 BuildRequires:	desktop-file-utils
 BuildRequires:	R-base
 BuildRequires:	pkgconfig(xext)
+BuildRequires:	gmp-devel
 BuildRequires:	qt4-devel
 
 %description
