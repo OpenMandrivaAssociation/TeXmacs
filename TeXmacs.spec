@@ -48,7 +48,7 @@ and tools for collaborative authoring are planned for later.
 %setup -q -n %{name}-%{version}-src
 find . -name '*.cpp' -exec chmod 644 {} \;
 find . -name '*.hpp' -exec chmod 644 {} \;
-%apply_patches
+%autopatch -p1
 
 %build
 
