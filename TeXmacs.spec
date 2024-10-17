@@ -6,7 +6,7 @@ Version:	1.99.5
 Release:	1
 License:	GPLv2+
 Group:		Editors
-URL:		http://www.texmacs.org
+URL:		https://www.texmacs.org
 Source0:	http://www.texmacs.org/Download/ftp/tmftp/source/%{name}-%{version}-src.tar.gz
 Source10:	%{name}.16.png
 Source11:	%{name}.32.png
