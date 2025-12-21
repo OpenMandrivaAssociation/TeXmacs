@@ -18,6 +18,11 @@ Requires:	R-base
 Requires:	maxima >= 5.9.1
 Obsoletes:	TeXmacs-fonts
 Provides:	TeXmacs-fonts
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(guile-1.8)
